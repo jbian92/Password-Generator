@@ -17,6 +17,9 @@ def main():
 @app.route('/result', methods = ['POST'])
 def result():
     form = request.form
+    upper = False
+    lower = False
+
     length = form['length']
     length = length.strip() # remove leading & trailing whitespace
 
@@ -24,5 +27,17 @@ def result():
     if not length.isnumeric():
         return "Error: You did not enter a valid length."
 
-    password = functions.generator(int(length))
+    # check if user checked any checkboxes
+    if form.getlist('upper') == ['on']:
+        upper = True
+    if form.getlist('lower') == ['on']:
+        lower = True
+
+    data = {
+        "length": int(length),
+        "upper": upper,
+        "lower": lower
+    }
+
+    password = functions.generator(data)
     return render_template('result.html', password = password)

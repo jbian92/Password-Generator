@@ -5,11 +5,26 @@
     <body>
         <h1>Welcome to Password Generator!</h1>
         <h3>Please put in the requirements for your password.</h3>
-        <form method = "POST" action = "/result">
-            <label for = "length">Enter the length: </label>
-            <input type = "text" name = "length" placeholder = "length"/>
+        <form method="POST" action="/result">
+            <label for="length">Enter the length: </label>
+            <input type="text" name="length" placeholder="e.g. 4"/>
 
-            <input type="submit" value="Submit"/>
+            <p>Requires:</p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="upper" id="upper">
+                <label class="form-check-label" for="upper">
+                    uppercase letters (A, Z)
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="lower" id="lower">
+                <label class="form-check-label" for="lower">
+                    lowercase letters (a, z)
+                </label>
+            </div>
+
+            <input type="submit" value="Generate">
+
         </form>
     </body>
 </html>
