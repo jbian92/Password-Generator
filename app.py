@@ -19,6 +19,7 @@ def result():
     form = request.form
     upper = False
     lower = False
+    numeric = False
 
     length = form['length']
     length = length.strip() # remove leading & trailing whitespace
@@ -32,11 +33,14 @@ def result():
         upper = True
     if form.getlist('lower') == ['on']:
         lower = True
+    if form.getlist('numeric') == ['on']:
+        numeric = True
 
     data = {
         "length": int(length),
         "upper": upper,
-        "lower": lower
+        "lower": lower,
+        "numeric": numeric
     }
 
     password = functions.generator(data)
