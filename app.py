@@ -9,8 +9,7 @@ import functions
 app = Flask(__name__)
 
 # -- Routes section --
-@app.route('/')
-@app.route('/main')
+@app.route('/', methods = ['GET'])
 def main():
     return render_template('main.html')
 
@@ -20,21 +19,29 @@ def result():
     upper = False
     lower = False
     numeric = False
+    checked_boxes = 0
 
     length = form['length']
     length = length.strip() # remove leading & trailing whitespace
 
     # user did not enter a valid length
     if not length.isnumeric():
-        return "Error: You did not enter a valid length."
+        return render_template('main.html')
 
     # check if user checked any checkboxes
     if form.getlist('upper') == ['on']:
         upper = True
+        checked_boxes += 1
     if form.getlist('lower') == ['on']:
         lower = True
+        checked_boxes += 1
     if form.getlist('numeric') == ['on']:
         numeric = True
+        checked_boxes += 1
+
+    # user did not check any boxes
+    if checked_boxes == 0:
+        return render_template('main.html')
 
     data = {
         "length": int(length),
