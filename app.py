@@ -47,7 +47,8 @@ def result():
         "length": int(length),
         "upper": upper,
         "lower": lower,
-        "numeric": numeric
+        "numeric": numeric,
+        "checked_boxes": checked_boxes
     }
 
     password = functions.generator(data)
