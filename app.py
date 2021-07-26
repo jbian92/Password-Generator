@@ -16,8 +16,8 @@ def main():
 @app.route('/result', methods = ['POST'])
 def result():
     form = request.form
-    upper = lower = numeric = special = False
-    checked_boxes = 0
+    checked_categories = list()
+    num_checked_boxes = 0
 
     length = form['length']
     length = length.strip() # remove leading & trailing whitespace
@@ -28,29 +28,26 @@ def result():
 
     # check if user checked any checkboxes
     if form.getlist('upper') == ['on']:
-        upper = True
-        checked_boxes += 1
+        checked_categories.append('num_upper')
+        num_checked_boxes += 1
     if form.getlist('lower') == ['on']:
-        lower = True
-        checked_boxes += 1
+        checked_categories.append('num_lower')
+        num_checked_boxes += 1
     if form.getlist('numeric') == ['on']:
-        numeric = True
-        checked_boxes += 1
+        checked_categories.append('num_numeric')
+        num_checked_boxes += 1
     if form.getlist('special') == ['on']:
-        special = True
-        checked_boxes += 1
+        checked_categories.append('num_special')
+        num_checked_boxes += 1
 
     # user did not check any boxes
-    if checked_boxes == 0:
+    if num_checked_boxes == 0:
         return render_template('main.html')
 
     data = {
         "length": int(length),
-        "upper": upper,
-        "lower": lower,
-        "numeric": numeric,
-        "special": special,
-        "checked_boxes": checked_boxes
+        "checked_categories": checked_categories,
+        "num_checked_boxes": num_checked_boxes
     }
 
     password = functions.generator(data)
