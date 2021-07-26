@@ -16,9 +16,7 @@ def main():
 @app.route('/result', methods = ['POST'])
 def result():
     form = request.form
-    upper = False
-    lower = False
-    numeric = False
+    upper = lower = numeric = special = False
     checked_boxes = 0
 
     length = form['length']
@@ -38,6 +36,9 @@ def result():
     if form.getlist('numeric') == ['on']:
         numeric = True
         checked_boxes += 1
+    if form.getlist('special') == ['on']:
+        special = True
+        checked_boxes += 1
 
     # user did not check any boxes
     if checked_boxes == 0:
@@ -48,6 +49,7 @@ def result():
         "upper": upper,
         "lower": lower,
         "numeric": numeric,
+        "special": special,
         "checked_boxes": checked_boxes
     }
 

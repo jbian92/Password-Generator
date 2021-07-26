@@ -2,58 +2,56 @@ import random
 
 def generator(data):
     alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    special_chars = ['!', '@', '#', '%', '+', '/', '\\', "'", '$', '^', '?', ':', ',', '(', ')', '{', '}', '[', ']', '~', '-', '_', '.']
     length = data['length']
     checked_boxes = data['checked_boxes']
-    lower = upper = numeric = ""
-    num_lower = num_upper = num_numeric = 0
+    lower = upper = numeric = special = ""
+    required = {
+        'num_lower': 0,
+        'num_upper': 0,
+        'num_numeric': 0,
+        'num_special': 0
+    }
+    required_list = list()
+
+    for category in data:
+        if data[category]:
+            required_list.append("num_" + category)
+    
+    required_list.pop(0) # remove 'num_length'
+    required_list.pop() # remove 'num_checked_boxes'
 
     # -- Determine the frequency of each different category of characters --
-    if checked_boxes == 3:
-        # randomly choose how many uppercase letters 
-        num_upper = random.randint(1, length - 2)
-
-        # randomly choose how many lowercase letters
-        num_lower = random.randint(1, length - num_upper - 1)
-        num_numeric = length - num_upper - num_lower
-
+    if checked_boxes == 4:
+        required[required_list[0]] = random.randint(1, length - 3)
+        required[required_list[1]] = random.randint(1, length - required[required_list[0]] - 2)
+        required[required_list[2]] = random.randint(1, length - required[required_list[0]] - required[required_list[1]] - 1)
+        required[required_list[3]] = length - required[required_list[0]] - required[required_list[1]] - required[required_list[2]]
+    elif checked_boxes == 3:
+        required[required_list[0]] = random.randint(1, length - 2)
+        required[required_list[1]] = random.randint(1, length - required[required_list[0]] - 1)
+        required[required_list[2]] = length - required[required_list[0]] - required[required_list[1]]
     elif checked_boxes == 2:
-        if data['upper'] and data['lower']:
-            # randomly choose how many uppercase letters 
-            num_upper = random.randint(1, length - 1)
-            num_lower = length - num_upper
-
-        elif data['upper'] and data['numeric']:
-            # randomly choose how many uppercase letters 
-            num_upper = random.randint(1, length - 1)
-            num_numeric = length - num_upper
-
-        elif data['lower'] and data['numeric']:
-            # randomly choose how many lowercase letters 
-            num_lower = random.randint(1, length - 1)
-            num_numeric = length - num_lower
-    
+        required[required_list[0]] = random.randint(1, length - 1)
+        required[required_list[1]] = length - required[required_list[0]]
     else:
-        if data['upper']:
-            num_upper = length
-
-        elif data['lower']:
-            num_lower = length
-
-        elif data['numeric']:
-            num_numeric = length
+        required[required_list[0]] = length
     
     # -- Get each category's characters -- 
-    for i in range(num_upper):
+    for i in range(required['num_upper']):
         upper += (random.choice(alphabet)).upper()
     
-    for i in range(num_lower):
+    for i in range(required['num_lower']):
         lower += random.choice(alphabet)
 
-    for i in range(num_numeric):
+    for i in range(required['num_numeric']):
         numeric += str(random.randint(0, 9))
+
+    for i in range(required['num_special']):
+        special += random.choice(special_chars)
     
     # concatenate the strings and convert to a list
-    password_list = list(upper + lower + numeric)
+    password_list = list(upper + lower + numeric + special)
 
     # randomly shuffle the characters in the password
     random.shuffle(password_list)
