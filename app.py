@@ -24,25 +24,21 @@ def result():
 
     # user did not enter a valid length
     if not length.isnumeric():
-        return render_template('main.html')
+        return render_template('error.html')
 
     # check if user checked any checkboxes
-    if form.getlist('upper') == ['on']:
-        checked_categories.append('num_upper')
-        num_checked_boxes += 1
-    if form.getlist('lower') == ['on']:
-        checked_categories.append('num_lower')
-        num_checked_boxes += 1
-    if form.getlist('numeric') == ['on']:
-        checked_categories.append('num_numeric')
-        num_checked_boxes += 1
-    if form.getlist('special') == ['on']:
-        checked_categories.append('num_special')
-        num_checked_boxes += 1
+    for checkbox in ['upper', 'lower', 'numeric', 'special']:
+        if form.getlist(checkbox) == ['on']:
+            checked_categories.append('num_' + checkbox)
+            num_checked_boxes += 1
 
     # user did not check any boxes
     if num_checked_boxes == 0:
-        return render_template('main.html')
+        return render_template('error.html')
+
+    # user's number of requirements is greater than length given
+    if num_checked_boxes > length:
+        return render_template('error.html')
 
     data = {
         "length": int(length),
