@@ -24,7 +24,7 @@ def result():
 
     # user did not enter a valid length
     if not length.isnumeric():
-        return render_template('error.html')
+        return render_template('error.html', message="invalid length")
 
     # check if user checked any checkboxes
     for checkbox in ['upper', 'lower', 'numeric', 'special']:
@@ -34,11 +34,11 @@ def result():
 
     # user did not check any boxes
     if num_checked_boxes == 0:
-        return render_template('error.html')
+        return render_template('error.html', message="did not check off any checkboxes")
 
     # user's number of requirements is greater than length given
-    if num_checked_boxes > length:
-        return render_template('error.html')
+    if num_checked_boxes > int(length):
+        return render_template('error.html', message="checked off more checkboxes than given length")
 
     data = {
         "length": int(length),
