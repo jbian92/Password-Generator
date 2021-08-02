@@ -10,6 +10,10 @@ app = Flask(__name__)
 
 # -- Routes section --
 @app.route('/', methods = ['GET'])
+def welcome():
+    return render_template('welcome.html')
+
+@app.route('/main', methods = ['GET'])
 def main():
     return render_template('main.html')
 

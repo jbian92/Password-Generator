@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
+{% block meta %}{% endblock meta %}
+
 {% block content %}
 <div class="error">
     <p class="oops">Oops!</p>
     <p class="message">ERROR: {{ message }}</p>
     <div class="text-center">
-    <form method="GET" action="/">
+    <form method="GET" action="/main">
         <button type="submit" class="btn btn-outline-primary">Try Again</button>
     </form>
 </div>

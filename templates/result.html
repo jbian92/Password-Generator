@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
+{% block meta %}{% endblock meta %}
+
 {% block content %}
 Your generated password is: {{password}}
 
-<form method="GET" action="/">
+<form method="GET" action="/main">
     <button type="submit" class="btn btn-outline-primary">Generate Another Password</button>
 </form>
 {% endblock content%}

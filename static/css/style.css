@@ -1,6 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
+/* welcome.html and main.html */
+.fade-in-welcome {
+    opacity: 0;
+    animation-name: fadeInOut;
+    animation-delay: 1s;
+    animation-duration: 4s;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.welcome {
+    text-align: center;
+    font-family: 'Courgette', cursive;
+    font-size: 4vw;
+}
+
+.fade-in-text {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+@keyframes fadeInOut {
+    0%   {opacity: 0;}
+    10%  {opacity: 0.5;}
+    35%  {opacity: 1;}
+    75%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@keyframes fadeIn {
+    0%   {opacity: 0;}
+    10%  {opacity: 0.5;}
+    35%  {opacity: 1;}
+    75%  {opacity: 1;}
+    100% {opacity: 1;}
+}
+
+.directions {
+    text-align: center;
+    font-size: 2vw;
+}
+
+.label {
+    font-size: 1.2vw;
+}
+
+.form-check-label {
+    font-size: 1vw;
+}
+
+/* error.html */
 .error {
     position: fixed;
     top: 50%;
