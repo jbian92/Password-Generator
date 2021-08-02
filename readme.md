@@ -1,4 +1,5 @@
 # Password Generator
+I started this personal project to increase my understanding of web development using Python, Flask, HTML, and CSS. 
 
 ## Challenges Faced
 ### Reducing the amount of if-elif-else statements when determining the frequency of each different category of characters.
