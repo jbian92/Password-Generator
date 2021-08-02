@@ -3,9 +3,11 @@
 {% block meta %}{% endblock meta %}
 
 {% block content %}
-Your generated password is: {{password}}
+<div class="password">
+    <p>Your generated password is: {{password}}</p>
 
-<form method="GET" action="/main">
-    <button type="submit" class="btn btn-outline-primary">Generate Another Password</button>
-</form>
+    <form method="GET" action="/main">
+        <button type="submit" class="btn btn-outline-primary">Generate Another Password</button>
+    </form>
+</div>
 {% endblock content%}
