@@ -37,3 +37,5 @@ I started this personal project to increase my understanding of web development 
     animation-fill-mode: forwards;
   }
   ```
+  I'm very proud at how the animation turned out: 
+  ![text animation](static/images/text_animation.gif)
