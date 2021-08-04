@@ -1,6 +1,13 @@
 # Password Generator
 I started this personal project to increase my understanding of web development using Python, Flask, HTML, CSS, and Bootstrap. 
 
+## Website: https://jbian92-password-generator.herokuapp.com/ 
+
+## Currently Working On...
+- Allowing input boxes to automatically resize depending on screen size 
+- Adding a button to copy generated password to clipboard
+- Creating an option to create an account and save generated passwords using MongoDB
+
 ## Challenges Faced
 ### 1. Reducing the amount of if-elif-else statements when determining the frequency of each different category of characters.
 - **Problem**: Looking at all the if-elif-else statements in my code, I thought that there must be a simpler way to complete the same task. 
