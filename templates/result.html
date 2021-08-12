@@ -4,10 +4,38 @@
 
 {% block content %}
 <div class="password">
-    <p>Your generated password is: {{password}}</p>
+    <p>Your generated password is:</p>
+    <p id="password">{{password}}</p>
 
-    <form method="GET" action="/main">
-        <button type="submit" class="btn btn-outline-primary">Generate Another Password</button>
-    </form>
+    <div class="row">
+        <div class="col">
+            <button onclick="copyToClipboard()" class="btn btn-outline-primary">Copy to Clipboard</button>
+        </div>
+        <div class="col">
+            <form method="GET" action="/main">
+                <button type="submit" class="btn btn-outline-primary">Generate Another Password</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+<script>
+function copyToClipboard() {
+    const str = document.getElementById('password').innerText // get the content of the target element
+    const el = document.createElement('textarea')             // create a new textarea element
+    el.value = str                                            // set the value to match the content of str
+    
+    // make the textarea invisible to the user
+    el.setAttribute('readonly', '')
+    el.style.position = 'absolute'
+    el.style.left = '-9999px'
+
+    document.body.appendChild(el)   // append the element to the DOM
+    el.select()                     // select the content of the element
+    document.execCommand('copy')    // copy the selected content
+    document.body.removeChild(el)   // remove the textarea from the DOM
+
+    alert(`Copied: ${str}`)
+}
+</script>
 {% endblock content%}
