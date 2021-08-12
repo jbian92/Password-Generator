@@ -11,6 +11,8 @@ I started this personal project to increase my understanding of web development 
 ## Currently Working On...
 - Creating an option to create an account and save generated passwords using MongoDB
 - Adding a favicon/tab icon
+- Adding a navbar
+- Adding a footer
 
 ## Challenges Faced
 ### 1. Reducing the amount of if-elif-else statements when determining the frequency of each different category of characters.
