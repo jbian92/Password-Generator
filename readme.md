@@ -6,11 +6,11 @@ I started this personal project to increase my understanding of web development 
 ## Features
 - Randomly generates a password based on the user's password requirements (e.g. length, upper/lower case letters, numbers, special characters)
 - Text animation from Welcome screen to User Input screen 
+- Copy to Clipboard button to copy the generated password to the user's clipboard
 
 ## Currently Working On...
-- Allowing input boxes to automatically resize depending on screen size 
-- Adding a button to copy generated password to clipboard
 - Creating an option to create an account and save generated passwords using MongoDB
+- Adding a favicon/tab icon
 
 ## Challenges Faced
 ### 1. Reducing the amount of if-elif-else statements when determining the frequency of each different category of characters.
