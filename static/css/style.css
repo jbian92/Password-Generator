@@ -65,24 +65,24 @@
 }
 
 .directions {
-    text-align: center;
-    font-size: 2vw;
+    text-align: left;
+    font-size: 40px;
 }
 
 .length {
-    font-size: 1.2vw;
+    font-size: 20px;
     margin: 0;
     padding: 1px;
 }
 
 .requires {
-    font-size: 1.2vw;
+    font-size: 20px;
     margin: 0;
-    padding: 0;
+    padding-top: 3px;
 }
 
 .form-check-label {
-    font-size: 1vw;
+    font-size: 17px;
     cursor: pointer;
 }
 
@@ -120,13 +120,13 @@ input[type=text]:focus {
 .oops {
     text-align: center;
     font-family: 'Lobster', cursive;
-    font-size: 15vw; /* 15% of the viewport width */
+    font-size: 130px; 
 }
 
 .message {
     text-align: center;
     font-family: 'Roboto Slab', serif;
-    font-size: 4vw;
+    font-size: 40px;
 }
 
 /* result.html */
@@ -136,5 +136,5 @@ input[type=text]:focus {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    font-size: 2vw;
+    font-size: 50px;
 }
