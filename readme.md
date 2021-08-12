@@ -3,6 +3,10 @@ I started this personal project to increase my understanding of web development 
 
 ## Website: https://jbian92-password-generator.herokuapp.com/ 
 
+## Features
+- Randomly generates a password based on the user's password requirements (e.g. length, upper/lower case letters, numbers, special characters)
+- Text animation from Welcome screen to User Input screen 
+
 ## Currently Working On...
 - Allowing input boxes to automatically resize depending on screen size 
 - Adding a button to copy generated password to clipboard
